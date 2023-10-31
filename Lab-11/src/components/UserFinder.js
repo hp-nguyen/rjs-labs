@@ -1,9 +1,9 @@
-import { Fragment, useState, useEffect, Component } from 'react';
+import { Component, Fragment } from 'react';
 
-import Users from './Users';
-import classes from './UserFinder.module.css';
 import UsersContext from '../store/users-context';
 import ErrorBoundary from './ErrorBoundary';
+import classes from './UserFinder.module.css';
+import UserList from './UserList';
 
 class UserFinder extends Component {
   static contextType = UsersContext;
@@ -42,35 +42,11 @@ class UserFinder extends Component {
           <input type='search' onChange={this.searchChangeHandler.bind(this)} />
         </div>
         <ErrorBoundary>
-          <Users users={this.state.filteredUsers} />
+          <UserList users={this.state.filteredUsers} />
         </ErrorBoundary>
       </Fragment>
     );
   }
 }
-
-// const UserFinder = () => {
-//   const [filteredUsers, setFilteredUsers] = useState(DUMMY_USERS);
-//   const [searchTerm, setSearchTerm] = useState('');
-
-//   useEffect(() => {
-//     setFilteredUsers(
-//       DUMMY_USERS.filter((user) => user.name.includes(searchTerm))
-//     );
-//   }, [searchTerm]);
-
-//   const searchChangeHandler = (event) => {
-//     setSearchTerm(event.target.value);
-//   };
-
-//   return (
-//     <Fragment>
-//       <div className={classes.finder}>
-//         <input type='search' onChange={searchChangeHandler} />
-//       </div>
-//       <Users users={filteredUsers} />
-//     </Fragment>
-//   );
-// };
 
 export default UserFinder;
