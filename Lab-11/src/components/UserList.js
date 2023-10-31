@@ -3,7 +3,7 @@ import { Component } from 'react';
 import User from './User';
 import classes from './Users.module.css';
 
-class Users extends Component {
+class UserList extends Component {
   constructor() {
     super();
     this.state = {
@@ -75,4 +75,4 @@ class Users extends Component {
 //   );
 // };
 
-export default Users;
+export default UserList;
