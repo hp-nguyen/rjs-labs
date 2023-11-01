@@ -6,6 +6,7 @@ import classes from './UserFinder.module.css';
 import UserList from './UserList';
 
 class UserFinder extends Component {
+  // Using Context
   static contextType = UsersContext;
 
   constructor() {
@@ -17,7 +18,7 @@ class UserFinder extends Component {
   }
 
   componentDidMount() {
-    // Send http request...
+    // Get context's value
     this.setState({ filteredUsers: this.context.users });
   }
 
