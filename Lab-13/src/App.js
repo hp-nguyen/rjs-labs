@@ -12,22 +12,24 @@ function App() {
   useEffect(() => {
     const transformTasks = (tasksObj) => {
       const loadedTasks = [];
-
+  
       for (const taskKey in tasksObj) {
         loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
       }
-
+  
       setTasks(loadedTasks);
     };
 
+    // Need useCallback for fetchTasks fn to avoid infinite loop
     fetchTasks(
-      { url: 'https://react-http-6b4a6.firebaseio.com/tasks.json' },
+      { url: 'https://my-test-696e5-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json' },
       transformTasks
     );
   }, [fetchTasks]);
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
+    // fetch('https://my-test-696e5-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json').then(res => res.json()).then(data => console.log(data));
   };
 
   return (

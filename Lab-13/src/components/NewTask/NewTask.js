@@ -8,21 +8,20 @@ const NewTask = (props) => {
   const createTask = (taskText, taskData) => {
     const generatedId = taskData.name; // firebase-specific => "name" contains generated id
     const createdTask = { id: generatedId, text: taskText };
-
     props.onAddTask(createdTask);
   };
 
   const enterTaskHandler = async (taskText) => {
     sendTaskRequest(
       {
-        url: 'https://react-http-6b4a6.firebaseio.com/tasks.json',
+        url: 'https://my-test-696e5-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: { text: taskText },
       },
-      createTask.bind(null, taskText)
+      createTask.bind(null, taskText) // custom hook chỉ pass 1 argument là data
     );
   };
 
