@@ -10,7 +10,9 @@
 
 .modal {
   position: fixed;
-  top: 20vh;
+  max-height: 450px;
+  overflow-y: auto;
+  top: 15vh;
   left: 5%;
   width: 90%;
   background-color: white;
